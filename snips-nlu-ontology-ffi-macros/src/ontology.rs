@@ -147,6 +147,7 @@ pub enum SNIPS_SLOT_VALUE_TYPE {
     SNIPS_SLOT_VALUE_TYPE_TEMPERATURE = 7,
     SNIPS_SLOT_VALUE_TYPE_DURATION = 8,
     SNIPS_SLOT_VALUE_TYPE_PERCENTAGE = 9,
+    SNIPS_SLOT_VALUE_TYPE_MUSICARTIST = 10,
 }
 
 impl<'a> From<&'a ::SlotValue> for SNIPS_SLOT_VALUE_TYPE {
@@ -161,6 +162,7 @@ impl<'a> From<&'a ::SlotValue> for SNIPS_SLOT_VALUE_TYPE {
             &::SlotValue::Temperature(_) => SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_TEMPERATURE,
             &::SlotValue::Duration(_) => SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_DURATION,
             &::SlotValue::Percentage(_) => SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_PERCENTAGE,
+            &::SlotValue::MusicArtist(_) => SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_MUSICARTIST,
         }
     }
 }
@@ -377,6 +379,7 @@ impl From<::SlotValue> for CSlotValue {
             ::SlotValue::Temperature(v) => CTemperatureValue::from(v).into_raw_pointer() as _,
             ::SlotValue::Duration(v) => CDurationValue::from(v).into_raw_pointer() as _,
             ::SlotValue::Percentage(v) => (v.value as CPercentageValue).into_raw_pointer() as _,
+            ::SlotValue::MusicArtist(v) => CString::new(v.value).unwrap().into_raw() as _,
         };
         Self { value_type, value }
     }
@@ -395,6 +398,7 @@ impl Drop for CSlotValue {
                 SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_TEMPERATURE => CTemperatureValue::drop_raw_pointer(self.value as _),
                 SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_DURATION => CDurationValue::drop_raw_pointer(self.value as _),
                 SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_PERCENTAGE => CPercentageValue::drop_raw_pointer(self.value as _),
+                SNIPS_SLOT_VALUE_TYPE::SNIPS_SLOT_VALUE_TYPE_MUSICARTIST => CString::drop_raw_pointer(self.value),
             }
         };
     }
