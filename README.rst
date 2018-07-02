@@ -58,6 +58,15 @@ Supported builtin entities
 |               |                     | | Japanese          |
 |               |                     | | Korean            |
 +---------------+---------------------+---------------------+
+| MusicAlbum    | snips/musicAlbum    | | English           |
+|               |                     | | French            |
++---------------+---------------------+---------------------+
+| MusicArtist   | snips/musicArtist   | | English           |
+|               |                     | | French            |
++---------------+---------------------+---------------------+
+| MusicTrack    | snips/musicTrack    | | English           |
+|               |                     | | French            |
++---------------+---------------------+---------------------+
 | Number        | snips/number        | | German            |
 |               |                     | | English           |
 |               |                     | | Spanish           |
@@ -144,6 +153,45 @@ Duration
        "minutes": 0,
        "seconds": 0,
        "precision": "Exact"
+     }
+   ]
+
+----------
+MusicAlbum
+----------
+
+.. code-block:: json
+
+   [
+     {
+       "kind": "MusicAlbum",
+       "value": "Discovery"
+     }
+   ]
+
+-----------
+MusicArtist
+-----------
+
+.. code-block:: json
+
+   [
+     {
+       "kind": "MusicArtist",
+       "value": "Daft Punk"
+     }
+   ]
+
+----------
+MusicTrack
+----------
+
+.. code-block:: json
+
+   [
+     {
+       "kind": "MusicTrack",
+       "value": "Harder Better Faster Stronger"
      }
    ]
 
