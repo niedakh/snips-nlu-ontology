@@ -9,7 +9,7 @@ lazy_static = "1.0"
 maplit = "1.0"
 snips-nlu-utils = { git = "https://github.com/snipsco/snips-nlu-utils", tag = "0.6.1" }
 regex = "0.2"
-rustling-ontology = { git = "https://github.com/snipsco/rustling-ontology", tag = "0.17.2" }
+rustling-ontology = { git = "https://github.com/spokencloud/rustling-ontology", branch = "develop" }
 snips-nlu-ontology = { path = "../snips-nlu-ontology" }
 chrono = "0.3"
-rustling-ontology-moment = { git = "https://github.com/snipsco/rustling-ontology", tag = "0.17.2" }
+rustling-ontology-moment = { git = "https://github.com/spokencloud/rustling-ontology", branch = "develop" }
